@@ -1,7 +1,12 @@
 #!/usr/bin/env node
+
 var path = require('path');
 var fs = require('fs');
-var config_file = process.env.npm_package_config_configfile;
-var ldapsql = require(path.join(path.dirname(fs.realpathSync(__filename)),'../lib/ldapsql'))
 
+var config_file = process.env.npm_package_config_configfile;
+if(config_file === undefined) {
+    config_file = process.argv[2];
+}
+
+var ldapsql = require(path.join(path.dirname(fs.realpathSync(__filename)),'../lib/ldapsql'))
 var server = new ldapsql(config_file);
