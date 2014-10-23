@@ -1,0 +1,54 @@
+{
+    "ldap" : {
+        "port"     : 1389,
+        "basedn"   : "dc=example,dc=com",
+        "basedc"   : "example",
+        "rootu"    : "cn=root,dc=example,dc=com",
+        "rootp"    : "password"
+    },
+    "sql" : {
+        "host"     : "sql-server",
+        "port"     : 3306,
+        "user"     : "username",
+        "password" : "password",
+        "database" : "database",
+        "insecureAuth" : true,
+        "timeout"  : 300000
+    },
+    "branches" : [
+      { "branch" : "dc=example,dc=com",
+        "method" : "static",
+        "attributes" : {
+          "dc" : "example",
+          "o"  : "example",
+          "objectclass" : ["top", "dcobject", "organization"]
+        },
+        "children" : [ 
+          { "branch" : "ou=People,dc=example,dc=com",
+            "method" : "static",
+            "attributes" : {
+              "ou" : "People",
+              "objectclass" : ["top","organizationalunit"]
+            },
+            "children": {
+              "method" : "sql",
+              "queryfile" : "people.sql.example",
+              "attributes" : {
+                "objectclass" : "inetorgperson"
+              }
+            }
+        },
+         {
+            "branch" : "cn=root,dc=example,dc=com",
+            "method" : "static",
+            "auth" : true,
+            "attributes" : {
+              "cn" : "root",
+              "userpassword" : "password",
+              "objectclass" : ["simplesecurityobject","organizationalrole"]
+            }
+         }
+        ]
+      }
+    ]
+}

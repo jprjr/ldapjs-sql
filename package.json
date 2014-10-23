@@ -1,0 +1,32 @@
+{
+  "name": "ldapjs-sql",
+  "version": "0.0.1",
+  "description": "A server to represent a MySQL database as an LDAP tree.",
+  "author": "John Regan <john@jrjrtech.com>",
+  "bin": {
+  "module-name": "./bin/ldapjs-sql"
+},
+  "scripts": {
+    "start": "node bin/ldapjs-sql",
+  },
+  "main": "lib/ldapsql.js",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/jprjr/ldapjs-sql"
+},
+  "bugs": {
+  "url": "https://github.com/jprjr/ldapjs-sql/issues"
+},
+  "keywords": [
+  "ldap",
+  "sql",
+],
+  "dependencies": {
+    "ldapjs": "*",
+    "mysql": "*",
+    "minimist": "*",
+  },
+  "preferGlobal": true,
+  "private": false,
+  "license": "MIT"
+}

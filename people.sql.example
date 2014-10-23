@@ -1,0 +1,22 @@
+select
+ cast(p.person_id as char(20)) as employeenumber,
+ concat_ws(' ',p.first_name, p.last_name) as cn,
+ concat_ws(' ',p.first_name, p.last_name) as displayname,
+ p.first_name as givenname,
+ p.last_name as sn,
+ o.name as o,
+ p.title as title,
+ p.email_address as mail,
+ mphones.phone_no as mobile,
+ wphones.phone_no as telephonenumber
+
+from
+person p
+left outer join organization o on p.org_id = o.org_id
+left outer join (select mph.person_id, mph.phone_no from person_phone as mph
+                 where mph.phone_type_id=3) as mphones on p.person_id = mphones.person_id
+left outer join (select wph.person_id, wph.phone_no from person_phone as wph
+                 where wph.phone_type_id=2) as wphones on p.person_id = wphones.person_id
+
+group by p.person_id
+
