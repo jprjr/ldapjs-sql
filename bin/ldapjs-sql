@@ -1,12 +1,7 @@
 #!/usr/bin/env node
 var path = require('path');
 var fs = require('fs');
-var argv = require('minimist')(process.argv.slice(2));
+var config_file = process.env.npm_package_config_configfile;
 var ldapsql = require(path.join(path.dirname(fs.realpathSync(__filename)),'../lib/ldapsql'))
 
-if(! ("config" in argv)) {
-    console.log("I need a config file, use --config <file>");
-    process.exit(1);
-}
-
-var server = new ldapsql(argv.config);
+var server = new ldapsql(config_file);

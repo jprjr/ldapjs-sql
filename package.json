@@ -7,9 +7,12 @@
   "module-name": "./bin/ldapjs-sql"
 },
   "scripts": {
-    "start": "node bin/ldapjs-sql",
+    "start": "node bin/ldapjs-sql"
   },
   "main": "lib/ldapsql.js",
+  "config": {
+      "configfile": "config.json"
+  },
   "repository": {
   "type": "git",
   "url": "https://github.com/jprjr/ldapjs-sql"
@@ -19,12 +22,12 @@
 },
   "keywords": [
   "ldap",
-  "sql",
+  "sql"
 ],
   "dependencies": {
     "ldapjs": "*",
     "mysql": "*",
-    "minimist": "*",
+    "minimist": "*"
   },
   "preferGlobal": true,
   "private": false,
