@@ -27,7 +27,7 @@ select
  p.first_name as givenname,
  p.last_name as sn,
 from
-person p
+people p
 ```
 
 The server startup can take a few seconds - the server will accept
